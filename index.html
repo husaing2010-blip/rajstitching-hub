@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajstitching Hub | Luxury Garment Construction & Bespoke Masterclasses</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#FAF6EE',
+                            100: '#F5EDDC',
+                            200: '#EBDCB9',
+                            300: '#DFC793',
+                            400: '#D4B26C',
+                            500: '#C5A880',
+                            600: '#B08F58',
+                            700: '#8C6F3F',
+                            800: '#68502B',
+                            900: '#46351A',
+                        },
+                        obsidian: {
+                            800: '#161822',
+                            850: '#12141D',
+                            900: '#0C0D14',
+                            950: '#07080D',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cinzel"', '"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-obsidian-950 text-slate-200 font-sans antialiased selection:bg-gold-500/20 selection:text-gold-300 min-h-screen flex flex-col no-select">
+
+    <!-- Anti-Copy & Screenshot Overlay Shield (Appears on Blur or Screenshot attempt) -->
+    <div id="securityShield" class="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-2xl hidden flex-col items-center justify-center p-6 text-center">
+        <div class="w-20 h-20 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 mb-6 animate-pulse">
+            <i data-lucide="shield-alert" class="w-10 h-10"></i>
+        </div>
+        <h2 class="text-2xl font-serif font-bold text-white mb-2">Protected Content Shield Active</h2>
+        <p class="text-slate-400 max-w-md text-sm mb-6">
+            Screen capture, screenshots, recording software, or background switching are strictly prohibited by Rajstitching Hub DRM policies.
+        </p>
+        <button onclick="dismissShield()" class="px-6 py-2.5 rounded-full bg-gold-500 text-obsidian-950 font-semibold text-sm hover:bg-gold-400 transition-all shadow-lg shadow-gold-500/20">
+            Resume Secure Session
+        </button>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-obsidian-950/85 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand / Logo -->
+            <a href="#" class="flex items-center gap-3.5 group">
+                <div id="brandLogoContainer" class="w-12 h-12 rounded-full border border-gold-400/50 bg-white/5 flex items-center justify-center text-gold-400 group-hover:border-gold-300 transition-all shadow-lg overflow-hidden p-0.5">
+                    <!-- Real Circular Logo (logo.png) -->
+                    <img id="customLogoImg" src="logo.png" alt="Rajstitching Hub" class="w-full h-full object-contain rounded-full" onerror="this.onerror=null; this.src='assets/logo.png';" onload="this.classList.remove('hidden'); document.getElementById('placeholderLogoSvg').classList.add('hidden');">
+                    <!-- Fallback Couture Needle Placeholder -->
+                    <svg id="placeholderLogoSvg" class="w-6 h-6 stroke-current hidden" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m14 4 6 6-9 9a2.828 2.828 0 1 1-4-4l9-9Z"></path>
+                        <path d="M7 17s-2.5 2-4 1 0-3 2-4"></path>
+                        <circle cx="17.5" cy="6.5" r="1.5"></circle>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-white uppercase block leading-tight">
+                        Rajstitching <span class="text-gold-400">Hub</span>
+                    </span>
+                    <span class="text-[10px] tracking-[0.25em] text-slate-400 uppercase font-medium">Bespoke Stitching Academy</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-gold-400 transition-colors">About Us</a>
+                <a href="#schedule" class="hover:text-gold-400 transition-colors flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block"></span>
+                    Live Batch
+                </a>
+                <a href="#curriculum" class="hover:text-gold-400 transition-colors">Curriculum</a>
+                <a href="#community" class="hover:text-gold-400 transition-colors">Instagram & YouTube</a>
+            </nav>
+
+            <!-- Actions (Login & Admin) -->
+            <div class="flex items-center gap-3">
+                <!-- Student Classroom Login Button -->
+                <button onclick="openStudentLoginModal()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-gold-500/10 hover:bg-gold-500/20 text-gold-300 border border-gold-500/30 transition-all flex items-center gap-2">
+                    <i data-lucide="play-circle" class="w-4 h-4 text-gold-400"></i>
+                    <span>Student Login</span>
+                </button>
+
+                <!-- Admin Access Toggle (Lock icon) -->
+                <button onclick="openAdminModal()" title="Owner Portal" class="p-2 rounded-lg text-slate-400 hover:text-gold-400 hover:bg-white/5 transition-all border border-transparent hover:border-white/10">
+                    <i data-lucide="lock" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1">
+
+        <!-- Hero Section -->
+        <section class="relative pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
+            <!-- Background luxury glow -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-gold-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <!-- Social Credibility Badges -->
+                <div class="inline-flex flex-wrap items-center justify-center gap-3 mb-8">
+                    <a id="heroInstaBadge" href="https://www.instagram.com/rajstitchinghub?stkn=YmRhODZyZ2NyMmVr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-300 text-xs font-semibold hover:bg-pink-500/20 transition-all">
+                        <i data-lucide="instagram" class="w-3.5 h-3.5 text-pink-400"></i>
+                        <span>10,000+ Followers on Instagram</span>
+                    </a>
+                    <a id="heroYtBadge" href="https://www.youtube.com/@rajstitchinghub" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-300 text-xs font-semibold hover:bg-red-500/20 transition-all">
+                        <i data-lucide="youtube" class="w-3.5 h-3.5 text-red-400"></i>
+                        <span>450+ YouTube Family</span>
+                    </a>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-white tracking-tight leading-[1.15] mb-6 max-w-4xl mx-auto">
+                    Learn Tailoring and Body Drafting from <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-400 to-gold-200">
+                        Rajstitching Hub Completely From Scratch
+                    </span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-slate-300 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+                    Designed for passionate moms, aspiring boutique creators, and independent brand founders. Learn how to draft your own body patterns and stitch master-fit garments from absolute zero.
+                </p>
+
+                <!-- Single Batch Card (India & UAE Time) -->
+                <div class="max-w-xl mx-auto p-6 rounded-2xl bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-gold-500/30 backdrop-blur-md shadow-2xl relative">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-0.5 rounded-full bg-gold-500 text-obsidian-950 font-bold text-[11px] uppercase tracking-wider shadow">
+                        Daily Live Masterclass Batch
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mt-2 divide-x divide-white/10">
+                        <div class="text-center px-2">
+                            <div class="text-xs uppercase tracking-wider text-slate-400 mb-1 flex items-center justify-center gap-1.5">
+                                <span>🇮🇳</span> India (IST)
+                            </div>
+                            <div class="text-3xl font-serif font-bold text-gold-300">10:30 AM</div>
+                            <div class="text-[11px] text-slate-400 mt-1">Morning Session</div>
+                        </div>
+                        <div class="text-center px-2">
+                            <div class="text-xs uppercase tracking-wider text-slate-400 mb-1 flex items-center justify-center gap-1.5">
+                                <span>🇦🇪</span> UAE (GST)
+                            </div>
+                            <div class="text-3xl font-serif font-bold text-gold-300">9:00 AM</div>
+                            <div class="text-[11px] text-slate-400 mt-1">Morning Session</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-center gap-2 text-xs text-slate-300 font-medium">
+                        <i data-lucide="clock" class="w-4 h-4 text-gold-400"></i>
+                        <span>1 Hour Daily Live Class • Direct Join Link Provided • 7-Day Recording Vault</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us & Social Community Section -->
+        <section id="about" class="py-20 bg-obsidian-900 border-y border-white/5 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-400 block mb-2">Our Community</span>
+                        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-6">
+                            Welcome to Rajstitching Hub
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+                            Rajstitching Hub is a dedicated practical academy founded for moms, home tailors, and budding designers who want to achieve professional bespoke tailoring standards without relying on complicated store-bought patterns.
+                        </p>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                            With an engaged community of over <strong class="text-gold-300 font-semibold">10,000+ followers on Instagram</strong> (<code class="text-pink-400 text-xs px-1.5 py-0.5 rounded bg-white/5">@rajstitchinghub</code>) and <strong class="text-gold-300 font-semibold">450+ YouTube subscribers</strong> (<code class="text-red-400 text-xs px-1.5 py-0.5 rounded bg-white/5">Rajstitching Hub</code>), we teach raw structural drafting that fits any human body shape seamlessly.
+                        </p>
+
+                        <!-- Highlights -->
+                        <div class="grid grid-cols-2 gap-4 pt-2">
+                            <div class="p-4 rounded-xl bg-obsidian-950 border border-white/5">
+                                <div class="text-2xl font-serif font-bold text-gold-300">10,000+</div>
+                                <div class="text-xs text-slate-400">Instagram Followers</div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-obsidian-950 border border-white/5">
+                                <div class="text-2xl font-serif font-bold text-gold-300">450+</div>
+                                <div class="text-xs text-slate-400">YouTube Subscribers</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Showcase Cards -->
+                    <div class="space-y-4">
+                        <!-- Instagram Card -->
+                        <div class="p-6 rounded-2xl bg-gradient-to-br from-pink-500/10 via-obsidian-850 to-obsidian-950 border border-pink-500/30 flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="instagram" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white mb-1">Follow Us On Instagram</h3>
+                                <p class="text-xs text-slate-400 mb-3">Join 10K+ stitching enthusiasts for daily updates, behind-the-scenes stitching reels, and live announcements.</p>
+                                <a id="instaDirectBtn" href="https://www.instagram.com/rajstitchinghub?stkn=YmRhODZyZ2NyMmVr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-pink-400 font-semibold hover:text-pink-300">
+                                    <span>Visit @rajstitchinghub</span>
+                                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- YouTube Card -->
+                        <div class="p-6 rounded-2xl bg-gradient-to-br from-red-500/10 via-obsidian-850 to-obsidian-950 border border-red-500/30 flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="youtube" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-white mb-1">Rajstitching Hub on YouTube</h3>
+                                <p class="text-xs text-slate-400 mb-3">Watch our technique tutorials, student transformations, and foundational tailoring tips.</p>
+                                <a id="ytDirectBtn" href="https://www.youtube.com/@rajstitchinghub" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-red-400 font-semibold hover:text-red-300">
+                                    <span>Subscribe to Rajstitching Hub</span>
+                                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Batch & Direct Join Details -->
+        <section id="schedule" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <span class="text-xs font-semibold uppercase tracking-[0.2em] text-gold-400 block mb-2">Daily 1-Hour Focus</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-4">Official Live Batch Schedule</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Direct live interactive session where you stitch along with our instructor. Direct join links are published right inside your student dashboard.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    <!-- Detail 1 -->
+                    <div class="p-6 rounded-2xl bg-obsidian-900 border border-white/5 hover:border-gold-500/30 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 mb-4">
+                            <i data-lucide="clock" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-base font-serif font-bold text-white mb-2">10:30 AM IST (India)</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                            9:00 AM UAE Time. Daily 1 hour of comprehensive practical instructions with real-time Q&A.
+                        </p>
+                    </div>
+
+                    <!-- Detail 2 -->
+                    <div class="p-6 rounded-2xl bg-obsidian-900 border border-white/5 hover:border-gold-500/30 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 mb-4">
+                            <i data-lucide="video" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-base font-serif font-bold text-white mb-2">Direct Batch Join Link</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                            No hunting through chats. Log into your student portal and click the direct live batch join link every morning.
+                        </p>
+                    </div>
+
+                    <!-- Detail 3 -->
+                    <div class="p-6 rounded-2xl bg-obsidian-900 border border-white/5 hover:border-gold-500/30 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 mb-4">
+                            <i data-lucide="archive" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-base font-serif font-bold text-white mb-2">7-Day Protected Vault</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                            Missed a live session? All session recordings stay safely in your private student vault for 7 days (1 week).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curriculum Section: 3 Compulsory Days & From Scratch -->
+        <section id="curriculum" class="py-24 bg-obsidian-900/60 border-t border-white/5 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <!-- Compulsory 3 Days Callout Banner -->
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-6">
+                        <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                        Important: The First 3 Days Are Compulsory For All Students
+                    </div>
+
+                    <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mb-4">Learn From Absolute Scratch</h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        You do not need any prior tailoring experience. We begin from the very basics and guide you through drawing your own body shapes and creating flawless bespoke fits.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Compulsory Foundation -->
+                    <div class="p-6 rounded-2xl bg-gradient-to-b from-amber-500/[0.08] to-transparent border border-amber-500/30 transition-all relative">
+                        <div class="absolute -top-3 right-4 px-2.5 py-0.5 rounded-full bg-amber-500 text-obsidian-950 text-[10px] font-bold uppercase">
+                            Compulsory
+                        </div>
+                        <span class="text-amber-400 font-serif font-bold text-3xl mb-3 block">01</span>
+                        <h4 class="text-lg font-serif font-bold text-white mb-2">The 3-Day Foundation</h4>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            The essential 3 days where we set up fabric understanding, grainline alignment, machine tension balance, and fundamental needle control.
+                        </p>
+                    </div>
+
+                    <!-- Body Draw From Scratch -->
+                    <div class="p-6 rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent border border-white/5 hover:border-gold-500/30 transition-all">
+                        <span class="text-gold-500/40 font-serif font-bold text-3xl mb-3 block">02</span>
+                        <h4 class="text-lg font-serif font-bold text-white mb-2">Own Body Draw From Scratch</h4>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            Learn how to take accurate anatomical body measurements and sketch your own custom body draft blocks without using store patterns.
+                        </p>
+                    </div>
+
+                    <!-- Construction & Seams -->
+                    <div class="p-6 rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent border border-white/5 hover:border-gold-500/30 transition-all">
+                        <span class="text-gold-500/40 font-serif font-bold text-3xl mb-3 block">03</span>
+                        <h4 class="text-lg font-serif font-bold text-white mb-2">Couture Seam Construction</h4>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            French seams, clean neckline turns, invisible zippers, and tailored sleeve setting techniques that deliver luxury boutique finishes.
+                        </p>
+                    </div>
+
+                    <!-- Independent Garment Making -->
+                    <div class="p-6 rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent border border-white/5 hover:border-gold-500/30 transition-all">
+                        <span class="text-gold-500/40 font-serif font-bold text-3xl mb-3 block">04</span>
+                        <h4 class="text-lg font-serif font-bold text-white mb-2">Full Outfit Assembly</h4>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            Cut, construct, and finish complete outfits on your own with zero guesswork and confidence to create garments for yourself and your clients.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="py-20 border-t border-white/5 text-center">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-4">Join Our Growing Family</h2>
+                <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
+                    Follow us on Instagram for masterclass announcements, student work highlights, and batch registration updates.
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <a id="footerInstagramBtn" href="https://www.instagram.com/rajstitchinghub?stkn=YmRhODZyZ2NyMmVr" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white font-semibold text-sm transition-all flex items-center gap-2">
+                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                        <span>Instagram: @rajstitchinghub (10K+ Followers)</span>
+                    </a>
+                    <a id="footerYoutubeBtn" href="https://www.youtube.com/@rajstitchinghub" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-sm transition-all flex items-center gap-2">
+                        <i data-lucide="youtube" class="w-4 h-4"></i>
+                        <span>YouTube: Rajstitching Hub (450+ Subs)</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-obsidian-950 border-t border-white/5 py-12 text-center text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <div class="flex items-center justify-center gap-3">
+                <img src="logo.png" onerror="this.onerror=null; this.src='assets/logo.png';" alt="Rajstitching Hub" class="w-9 h-9 rounded-full object-contain border border-gold-500/30 shadow">
+                <span class="font-serif font-bold text-white text-base tracking-wider uppercase">Rajstitching <span class="text-gold-400">Hub</span></span>
+            </div>
+            <p>Empowering moms, independent creators, and bespoke fashion studios worldwide.</p>
+            <div class="flex items-center justify-center gap-6 text-slate-400 pt-2">
+                <span>Daily Batch: 10:30 AM IST / 9:00 AM UAE</span>
+                <span>•</span>
+                <span>1 Hour Daily</span>
+                <span>•</span>
+                <span>3 Compulsory Days Foundation</span>
+            </div>
+            <p class="text-[11px] text-slate-400 pt-4">
+                &copy; <span id="currentYear"></span> Rajstitching Hub. All rights reserved. Content protected by anti-piracy systems.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ============================================================= -->
+    <!-- MODAL 1: STUDENT LOGIN (Name + Email + Mobile Verification)    -->
+    <!-- ============================================================= -->
+    <div id="studentLoginModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-obsidian-900 border border-gold-500/30 rounded-2xl w-full max-w-md p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="closeStudentLoginModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 mx-auto mb-3">
+                    <i data-lucide="key" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-white">Student Portal Access</h3>
+                <p class="text-xs text-slate-400 mt-1">Please enter your 3 registered details to access your live batch and 7-day session vault.</p>
+            </div>
+
+            <!-- Login requires: Full Name, Email, and Mobile Number -->
+            <form id="studentLoginForm" onsubmit="handleStudentLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">1. Your Full Name</label>
+                    <input type="text" id="loginName" required placeholder="Enter your registered name" class="w-full px-4 py-2.5 rounded-xl bg-obsidian-950 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">2. Registered Email Address</label>
+                    <input type="email" id="loginEmail" required placeholder="yourname@gmail.com" class="w-full px-4 py-2.5 rounded-xl bg-obsidian-950 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1 uppercase tracking-wider">3. Registered Mobile Number</label>
+                    <input type="text" id="loginMobile" required placeholder="e.g. +91 98201 54321 or +971 50 123 4567" class="w-full px-4 py-2.5 rounded-xl bg-obsidian-950 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-400 transition-colors">
+                </div>
+
+                <div id="loginErrorMsg" class="hidden text-xs text-red-400 bg-red-500/10 border border-red-500/20 p-3 rounded-lg text-center">
+                    Incorrect details. Please ensure your Name, Email, and Mobile match your registered record.
+                </div>
+
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-obsidian-950 font-bold text-sm hover:from-gold-400 hover:to-gold-500 transition-all shadow-lg shadow-gold-500/20 flex items-center justify-center gap-2">
+                    <i data-lucide="unlock" class="w-4 h-4"></i>
+                    <span>Enter My Classroom</span>
+                </button>
+            </form>
+
+            <div class="mt-6 pt-4 border-t border-white/5 text-center text-[11px] text-slate-400">
+                Need help? Contact us via Instagram <a href="https://www.instagram.com/rajstitchinghub?stkn=YmRhODZyZ2NyMmVr" target="_blank" class="text-pink-400 hover:underline">@rajstitchinghub</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- VIEW 2: PROTECTED VIDEO CLASSROOM & LIVE BATCH JOIN          -->
+    <!-- ============================================================= -->
+    <div id="videoClassroomModal" class="fixed inset-0 z-50 bg-obsidian-950 hidden flex-col">
+        <!-- Classroom Header -->
+        <div class="h-16 px-4 sm:px-8 border-b border-white/10 flex items-center justify-between bg-obsidian-900/90 backdrop-blur-md">
+            <div class="flex items-center gap-4">
+                <button onclick="exitClassroom()" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-xs text-slate-300 flex items-center gap-1.5 border border-white/10">
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                    <span>Exit Classroom</span>
+                </button>
+                <div class="border-l border-white/10 pl-4 hidden sm:block">
+                    <h4 class="text-sm font-serif font-bold text-white">Rajstitching Hub • Live & Session Archive</h4>
+                    <span class="text-[11px] text-slate-400">10:30 AM IST / 9:00 AM UAE Masterclass</span>
+                </div>
+            </div>
+
+            <!-- Student / Owner Status Badge -->
+            <div class="flex items-center gap-3">
+                <div id="classroomUserBadge" class="px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-medium flex items-center gap-2">
+                    <i data-lucide="user" class="w-3 h-3"></i>
+                    <span id="classroomUserName">Enrolled Student</span>
+                </div>
+                <div id="classroomExpiryCountdown" class="hidden sm:flex px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-medium items-center gap-1.5">
+                    <i data-lucide="clock" class="w-3 h-3"></i>
+                    <span id="classroomExpiryDays">28 days remaining</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Batch Join Link Banner (Posted directly here) -->
+        <div id="liveBatchJoinBanner" class="bg-gradient-to-r from-emerald-950/80 via-obsidian-900 to-obsidian-900 border-b border-emerald-500/30 px-4 sm:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5 text-xs text-slate-200">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="font-semibold text-emerald-300">Today's Live Batch:</span>
+                <span>10:30 AM India (IST) / 9:00 AM UAE (GST)</span>
+            </div>
+            <a id="classroomLiveJoinBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-obsidian-950 font-bold text-xs flex items-center gap-1.5 transition-all shadow-md">
+                <i data-lucide="video" class="w-3.5 h-3.5"></i>
+                <span>Join Live Session Now</span>
+            </a>
+        </div>
+
+        <!-- Video Player Body with DRM Protection -->
+        <div class="flex-1 flex items-center justify-center p-2 sm:p-6 bg-black relative overflow-hidden">
+            <!-- Container for Video & Floating Watermark -->
+            <div id="videoProtectionContainer" class="relative w-full max-w-5xl aspect-video bg-obsidian-900 rounded-xl overflow-hidden shadow-2xl border border-white/10 flex items-center justify-center select-none">
+
+                <!-- Video Element -->
+                <video id="masterVideoPlayer" class="w-full h-full object-contain" controls controlsList="nodownload noplaybackrate" disablePictureInPicture oncontextmenu="return false;">
+                    <source id="videoSource" src="" type="video/mp4">
+                    Your browser does not support protected HTML5 video.
+                </video>
+
+                <!-- DYNAMIC FLOATING WATERMARK (Deters Phone Camera & Screen Captures) -->
+                <div id="dynamicWatermark" class="pointer-events-none absolute z-30 transition-all duration-1000 ease-in-out opacity-25 hover:opacity-10 text-white font-mono text-[11px] sm:text-xs bg-black/40 px-3 py-1.5 rounded border border-white/10 backdrop-blur-xs select-none">
+                    <div id="watermarkContent">Rajstitching Hub Protected Content</div>
+                </div>
+
+                <!-- EXPIRED ACCESS LOCK SCREEN (Shown when 30 days are completed) -->
+                <div id="expiredLockScreen" class="absolute inset-0 bg-obsidian-950/95 backdrop-blur-lg z-40 hidden flex-col items-center justify-center p-6 text-center">
+                    <div class="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4">
+                        <i data-lucide="lock" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-white mb-2">7-Day Access Expired</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm max-w-md mb-6">
+                        Your 7-day subscription for Rajstitching Hub live recordings has ended. Please connect with us on Instagram to renew your access for upcoming live batches.
+                    </p>
+                    <a href="https://www.instagram.com/rajstitchinghub?stkn=YmRhODZyZ2NyMmVr" target="_blank" class="px-6 py-3 rounded-xl bg-pink-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-pink-500 transition-all flex items-center gap-2">
+                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                        <span>Contact @rajstitchinghub on Instagram</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Classroom Footer Notice -->
+        <div class="h-12 border-t border-white/5 bg-obsidian-900/80 px-6 flex items-center justify-between text-[11px] text-slate-400">
+            <div class="flex items-center gap-2">
+                <i data-lucide="shield" class="w-3.5 h-3.5 text-gold-400"></i>
+                <span>Rajstitching Hub Anti-Piracy Watermark Protection Active</span>
+            </div>
+            <div class="text-slate-400 hidden sm:block">
+                Screenshots, recordings & downloads are strictly prohibited.
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- MODAL 3: OWNER / ADMIN DASHBOARD                             -->
+    <!-- ============================================================= -->
+    <div id="adminModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-obsidian-900 border border-gold-500/30 rounded-2xl w-full max-w-4xl p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeAdminModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <!-- Admin Authentication Gate -->
+            <div id="adminAuthSection">
+                <div class="text-center mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 mx-auto mb-3">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-white">Owner & Admin Portal</h3>
+                    <p class="text-xs text-slate-400 mt-1">Enter Master Password to manage students, live links, and session videos.</p>
+                </div>
+
+                <form onsubmit="handleAdminAuth(event)" class="max-w-xs mx-auto space-y-4">
+                    <div>
+                        <input type="password" id="adminPasswordInput" required placeholder="Enter Master Password" class="w-full px-4 py-3 rounded-xl bg-obsidian-950 border border-white/10 text-white text-sm focus:outline-none focus:border-gold-400 text-center">
+                    </div>
+                    <div id="adminAuthError" class="hidden text-xs text-red-400 text-center">
+                        Incorrect password. Please try again.
+                    </div>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-gold-500 text-obsidian-950 font-bold text-sm hover:bg-gold-400 transition-all">
+                        Authenticate As Owner
+                    </button>
+                    <p class="text-[10px] text-slate-400 text-center">Restricted Owner & Management Area</p>
+                </form>
+            </div>
+
+            <!-- Admin Management Panel (Shown after Auth) -->
+            <div id="adminDashboardSection" class="hidden space-y-8">
+                <!-- Top Bar -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b border-white/10 gap-4">
+                    <div>
+                        <h3 class="text-2xl font-serif font-bold text-white">Owner Control Suite</h3>
+                        <p class="text-xs text-slate-400">Live Batch: 10:30 AM India / 9:00 AM UAE • 7-Day Auto-Expiry Manager</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="launchOwnerClassroom()" class="px-3.5 py-2 rounded-lg bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-semibold hover:bg-gold-500/20 transition-all flex items-center gap-1.5">
+                            <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                            <span>Watch As Owner (Never Expires)</span>
+                        </button>
+                        <button onclick="logoutAdmin()" class="px-3 py-2 rounded-lg bg-white/5 text-slate-400 hover:text-white text-xs border border-white/10">
+                            Lock
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Batch Link & Video Settings -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Live Batch Join Link Configuration -->
+                    <div class="p-5 rounded-2xl bg-obsidian-950 border border-emerald-500/30 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                                <i data-lucide="radio" class="w-4 h-4"></i>
+                                Today's Live Batch Join Link
+                            </span>
+                            <span class="text-[10px] text-emerald-300 font-medium bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                                Real-Time Sync
+                            </span>
+                        </div>
+                        <input type="text" id="adminLiveMeetingUrlInput" placeholder="Paste Google Meet, Zoom, or YouTube Live Link here" class="w-full px-3.5 py-2.5 rounded-lg bg-obsidian-900 border border-white/10 text-xs text-white focus:outline-none focus:border-emerald-400">
+                        <div class="flex flex-wrap justify-between items-center gap-2 pt-1">
+                            <span class="text-[11px] text-slate-400">Students access this link upon login.</span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="saveLiveMeetingUrl()" class="px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-obsidian-950 font-bold text-xs transition-all shadow-sm">
+                                    Save Link
+                                </button>
+                                <button onclick="ownerJoinLiveMeeting()" class="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/10 flex items-center gap-1 transition-all">
+                                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                    <span>Join Live</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Session Video Recording Source -->
+                    <div class="p-4 rounded-xl bg-obsidian-950 border border-white/5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                                <i data-lucide="video" class="w-4 h-4 text-gold-400"></i>
+                                Recording Video File Link
+                            </span>
+                        </div>
+                        <input type="text" id="adminVideoUrlInput" placeholder="Direct MP4 URL or recording stream" class="w-full px-3 py-2 rounded-lg bg-obsidian-900 border border-white/10 text-xs text-white focus:outline-none focus:border-gold-400">
+                        <div class="flex justify-between items-center text-[11px]">
+                            <span class="text-slate-400">Played in the protected video vault.</span>
+                            <button onclick="saveVideoUrl()" class="px-3 py-1 rounded bg-gold-500/20 hover:bg-gold-500/30 text-gold-300 font-semibold border border-gold-500/40">
+                                Update Recording
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form: Add New Customer (The 4 Fields: Name, Email, Mobile, Country) -->
+                <div class="p-5 rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent border border-gold-500/20">
+                    <h4 class="text-sm font-serif font-bold text-white mb-1 flex items-center gap-2">
+                        <i data-lucide="user-plus" class="w-4 h-4 text-gold-400"></i>
+                        <span>Register Customer (Issue 7-Day Access)</span>
+                    </h4>
+                    <p class="text-[11px] text-slate-400 mb-4">Adding a customer automatically starts their 7-day countdown timer.</p>
+
+                    <form id="addStudentForm" onsubmit="handleAddStudent(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                        <!-- 1. Full Name -->
+                        <div>
+                            <label class="block text-[11px] font-semibold text-slate-300 mb-1 uppercase tracking-wider">1. Full Name</label>
+                            <input type="text" id="newStudentName" required placeholder="e.g. Shabana Bano" class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-white/10 text-xs text-white focus:outline-none focus:border-gold-400">
+                        </div>
+
+                        <!-- 2. Email Address -->
+                        <div>
+                            <label class="block text-[11px] font-semibold text-slate-300 mb-1 uppercase tracking-wider">2. Email Address</label>
+                            <input type="email" id="newStudentEmail" required placeholder="shabana@gmail.com" class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-white/10 text-xs text-white focus:outline-none focus:border-gold-400">
+                        </div>
+
+                        <!-- 3. Mobile Number -->
+                        <div>
+                            <label class="block text-[11px] font-semibold text-slate-300 mb-1 uppercase tracking-wider">3. Mobile Number</label>
+                            <input type="text" id="newStudentMobile" required placeholder="+91 98201 54321" class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-white/10 text-xs text-white focus:outline-none focus:border-gold-400">
+                        </div>
+
+                        <!-- 4. Country -->
+                        <div>
+                            <label class="block text-[11px] font-semibold text-slate-300 mb-1 uppercase tracking-wider">4. Country</label>
+                            <input type="text" id="newStudentCountry" required placeholder="India / UAE" class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-white/10 text-xs text-white focus:outline-none focus:border-gold-400">
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="sm:col-span-2 lg:col-span-4 pt-2 flex justify-end">
+                            <button type="submit" class="px-5 py-2.5 rounded-xl bg-gold-500 text-obsidian-950 font-bold text-xs uppercase tracking-wider hover:bg-gold-400 transition-all flex items-center gap-1.5 shadow-md shadow-gold-500/20">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                                <span>Register Customer & Start 7-Day Pass</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Customer Directory Table -->
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="text-sm font-serif font-bold text-white flex items-center gap-2">
+                            <i data-lucide="users" class="w-4 h-4 text-gold-400"></i>
+                            <span>Enrolled Customer Directory (<span id="totalStudentsCount">0</span>)</span>
+                        </h4>
+                        <div class="flex items-center gap-2">
+                            <button onclick="exportStudentData()" title="Backup Student Database" class="px-2.5 py-1 rounded bg-white/5 hover:bg-white/10 text-[11px] text-slate-300 border border-white/10 flex items-center gap-1">
+                                <i data-lucide="download" class="w-3 h-3"></i>
+                                <span>Export JSON</span>
+                            </button>
+                            <button onclick="document.getElementById('importFileInput').click()" title="Restore Student Database" class="px-2.5 py-1 rounded bg-white/5 hover:bg-white/10 text-[11px] text-slate-300 border border-white/10 flex items-center gap-1">
+                                <i data-lucide="upload" class="w-3 h-3"></i>
+                                <span>Import</span>
+                            </button>
+                            <input type="file" id="importFileInput" class="hidden" accept=".json" onchange="importStudentData(event)">
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-xl border border-white/10 bg-obsidian-950">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-obsidian-900 border-b border-white/10 text-[11px] uppercase tracking-wider text-slate-400">
+                                <tr>
+                                    <th class="p-3">Customer Name</th>
+                                    <th class="p-3">Email & Mobile</th>
+                                    <th class="p-3">Country</th>
+                                    <th class="p-3">Enrolled Date</th>
+                                    <th class="p-3">7-Day Status</th>
+                                    <th class="p-3 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentTableBody" class="divide-y divide-white/5">
+                                <!-- Rendered dynamically by app.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- App JavaScript -->
+    <script src="app.js"></script>
+    <script>
+        // Initialize Lucide Icons & Date
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

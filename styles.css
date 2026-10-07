@@ -1,0 +1,90 @@
+/* Rajstitching Hub - Luxury Tailoring & DRM Protection Stylesheet */
+
+/* Disable Text Selection Globally (No-Copy Enforcement) */
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+/* Luxury Couture Stitch Border Accent */
+.stitching-border {
+    position: relative;
+}
+.stitching-border::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px dashed rgba(197, 168, 128, 0.3);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #0c0d14;
+}
+::-webkit-scrollbar-thumb {
+    background: #252839;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #c5a880;
+}
+
+/* Dynamic Anti-Piracy Watermark Styling */
+#dynamicWatermark {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    user-select: none;
+    pointer-events: none;
+    z-index: 35;
+    will-change: top, left, transform;
+}
+
+/* Video Player Restrictions */
+video::-webkit-media-controls-download-button {
+    display: none !important;
+}
+video::-webkit-media-controls-enclosure {
+    overflow: hidden;
+}
+video::-internal-media-controls-download-button {
+    display: none !important;
+}
+video {
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+/* Image & Media Protection */
+img, svg {
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+/* Security Shield Fade-in */
+#securityShield {
+    transition: opacity 0.25s ease-in-out;
+}
+
+/* Pulse Glow Effect for Batch */
+@keyframes goldPulse {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(197, 168, 128, 0.15);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(197, 168, 128, 0.35);
+    }
+}
+
+.gold-glow {
+    animation: goldPulse 4s infinite ease-in-out;
+}
